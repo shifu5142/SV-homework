@@ -1,192 +1,183 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Two Sections Form Page</title>
-
-  <style>
-    :root {
-      --bg1:#f0f4ff;
-      --bg2:#e6ebf5;
-      --card:#ffffff;
-      --accent:#2563eb;
-      --accent2:#2ecc71;
-      --muted:#6b7280;
-      font-family:Inter, system-ui, sans-serif;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Worker & Login Page</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: #e6f5e6;
     }
 
-    body {
-      margin: 0;
-      background: var(--bg1);
-      color: #111;
-    }
-
-    /* ⭐ GLOBAL FLEX SECTION STYLE */
     section {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 30px;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    /* ⭐ REUSABLE CARD */
-    .card {
-      width: 100%;
-      max-width: 380px;
-      background: var(--card);
-      padding: 28px;
-      border-radius: 14px;
-      box-shadow: 0 8px 26px rgba(0,0,0,0.08);
+    /* Add Worker Form */
+    .add-worker-form {
+        background: #fff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        width: 320px;
     }
 
-    h1, h2 {
-      margin: 0 0 12px 0;
-      font-size: 22px;
+    .add-worker-form input,
+    .add-worker-form select {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #b3d9b3;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 14px;
+        background: #fff;
+        color: #000;
     }
 
-    p.lead {
-      margin: 0 0 22px 0;
-      color: var(--muted);
-      font-size: 14px;
+    .add-worker-form input:focus,
+    .add-worker-form select:focus {
+        outline: none;
+        border-color: #4CAF50;
+        box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
     }
 
-    form {
-      display: grid;
-      gap: 16px;
+    .add-worker-form button {
+        width: 100%;
+        padding: 10px 0;
+        margin-top: 10px;
+        background: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: 0.3s;
     }
 
-    .field {
-      display: flex;
-      flex-direction: column;
+    .add-worker-form button:hover {
+        background-color: #388e3c;
     }
 
-    .field label {
-      font-size: 14px;
-      margin-bottom: 6px;
-      font-weight: 600;
+    /* Login Form */
+    .login-form {
+        background: #fff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        width: 320px;
     }
 
-    .field input {
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #dce0e6;
-      font-size: 14px;
-      transition: 0.12s;
+    .login-form input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #b3d9b3;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 14px;
     }
 
-    .field input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 4px 16px rgba(37,99,235,0.12);
-      outline: none;
+    .button-group {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
     }
 
-    /* ⭐ BUTTONS */
-    .btn-blue {
-      padding: 12px;
-      background: linear-gradient(180deg, var(--accent), #1d4ed8);
-      border: 0;
-      border-radius: 10px;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.15s;
+    .button-group button,
+    .button-group a.button-link {
+        flex: 1;
+        height: 40px;
+        text-align: center;
+        line-height: 20px;
+        border-radius: 5px;
+        font-size: 14px;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+        display: inline-block;
     }
 
-    .btn-blue:hover { opacity: 0.95; }
-
-    .btn-green {
-      padding: 12px;
-      width: 100%;
-      background: linear-gradient(180deg, var(--accent2), #27ae60);
-      border: none;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.2s;
+    .button-group button {
+        background: #4CAF50;
+        border: none;
     }
 
-    .btn-green:hover { opacity: 0.92; }
-
-    /* ⭐ FLOATING LINKS */
-    .floating-links {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      background: var(--accent);
-      padding: 10px 15px;
-      border-radius: 8px;
-      display: flex;
-      gap: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    .button-group button:hover {
+        background: #388e3c;
     }
 
-    .floating-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.2s;
+    .button-group a.button-link {
+        background: #888888;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .floating-links a:hover {
-      color: #c8d5ff;
+    .button-group a.button-link:hover {
+        background: #b2b0b0;
     }
-  </style>
+</style>
 </head>
-
 <body>
 
-  <!-- ⭐ SECTION 1: LOGIN -->
-  <section style="background: linear-gradient(135deg, var(--bg1), var(--bg2));">
-    <div class="floating-links">
-      <a href="register.html">Register</a>
-      <a href="pasForget.html">Forget Password</a>
+<!-- Section 1: Add Worker -->
+<section>
+    <div class="add-worker-form">
+        <h2>Add Worker</h2>
+        <form action="/add-worker" method="POST">
+            <input type="text" name="workerName" placeholder="Worker Name">
+            <select name="workerClass">
+                <option value="">Select Worker Class</option>
+                <option value="Junior">Junior</option>
+                <option value="Mid-Level">Mid-Level</option>
+                <option value="Senior">Senior</option>
+                <option value="Manager">Manager</option>
+            </select>
+            <input type="number" name="age" placeholder="Age">
+            <input type="text" name="salary" placeholder="Salary">
+            <button type="submit">Add Worker</button>
+        </form>
     </div>
+</section>
 
-    <div class="card">
-      <h1>Login</h1>
-      <p class="lead">Enter your username and password to continue.</p>
-
-      <form action="/submit-data" method="post">
-        <div class="field">
-          <label for="username">Username</label>
-          <input id="username" type="text" name="username" required placeholder="Your username" />
-        </div>
-
-        <div class="field">
-          <label for="password">Password</label>
-          <input id="password" type="password" name="password" required placeholder="Your password" />
-        </div>
-
-        <button type="submit" class="btn-blue">Login</button>
-      </form>
+<!-- Section 2: Login Form -->
+<section>
+    <div class="login-form">
+        <h2>Login</h2>
+        <form action="/login" method="POST">
+            <input id="email" type="email" name="email" placeholder="Email">
+            <input id="password" type="password" name="password" placeholder="Password">
+            <div class="button-group">
+                <button onclick="sentData(event)" type="submit">Login</button>
+                <a href="register.html" class="button-link">Register</a>
+            </div>
+        </form>
     </div>
-  </section>
-
-  <!-- ⭐ SECTION 2: USER DETAILS -->
-  <section style="background: #eef6f1;">
-    <div class="card">
-      <h2>הכנס פרטים</h2>
-
-      <form action="/second-form" method="post">
-        <div class="field">
-          <label for="first">First name</label>
-          <input id="first" type="text" name="firstName" required placeholder="שם פרטי">
-        </div>
-
-        <div class="field">
-          <label for="last">Last name</label>
-          <input id="last" type="text" name="lastName" required placeholder="שם משפחה">
-        </div>
-
-        <button class="btn-green" type="submit" onclick=sentData(Event)>Send</button>
-      </form>
-      <div id="resultt"></div>
-    </div>
-  </section>
-<script></script>
+</section>
+<script>
+    const sentData=async function(event){
+       event.preventDefault();
+       const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const res=await fetch('/login',{
+            headers:{
+                'accept':'application/json',
+                'content-type':'application/json'
+            },
+            method:'post',
+            body:JSON.stringify({email:email,password})
+        })
+        const data=await res.json()
+       if(data.success){window.location.href='home.html'} else{alert(`The ${data.email} not found please register`)
+           }}
+</script>
 </body>
 </html>

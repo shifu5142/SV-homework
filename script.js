@@ -473,7 +473,7 @@ const express=require('express')
 const app=express()
 const port=3000;
 const db=require('mongoose');
-const { json } = require('zod');
+const { json, success } = require('zod');
 db.connect('mongodb+srv://Tomer_SV:WARwar0102@cluster0.mnrtrei.mongodb.net/').then(()=>console.log('connect to mongoob')).catch((err)=>console.log(`connection to mongoob fail: ${err}`))
 app.use(express.urlencoded({extended:false}))
 app.use(express.static('html'));
@@ -529,43 +529,168 @@ app.get('/',(req,res)=>{
 //////////////////////////////////////////////////////////////////////////
 //mongoose
 ///////////////////////////////////////////////////////////////////////////
-const StudentSchema=new db.Schema({
-  "firstName": String,
-  "lastName": String,
-  "age": Number,
-  "course": String
-})
-const student=db.model('Student',StudentSchema)
-async function addUsers() {
-  await student.create({ firstName: "Tomer", lastName: "Levi", age: 20 });
-  await student.create({ firstName: "Dana", lastName: "Cohen", age: 25 });
-  await student.create({ firstName: "Avi", lastName: "Mor", age: 30 });
+// const StudentSchema=new db.Schema({
+//   "firstName": String,
+//   "lastName": String,
+//   "age": Number,
+//   "course": String
+// })
+// const student=db.model('Student',StudentSchema)
+// async function addUsers() {
+//   await student.create({ firstName: "Tomer", lastName: "Levi", age: 20 });
+//   await student.create({ firstName: "Dana", lastName: "Cohen", age: 25 });
+//   await student.create({ firstName: "Avi", lastName: "Mor", age: 30 });
 
-  console.log("3 users added");
+//   console.log("3 users added");
+// }
+
+// addUsers();
+
+// const CarsScheme=new db.Schema({
+//   'carNumber': Number,
+//   'brand': String,
+//   'year': Number,
+//   'color': String
+// })
+// const cars=db.model('car',CarsScheme);
+// cars.insertMany([{'carNumber': 23423443,
+//   'brand': 'toyota',
+//   'year': 1990,
+//   'color': 'black'},{'carNumber': 235345345,
+//   'brand': 'yhundi',
+//   'year': 1995,
+//   'color': 'red'},{'carNumber': 234234,
+//   'brand': 'toyota',
+//   'year': 2021,
+//   'color': 'green'}])
+
+// cars.find({'color':'black'}).then((data)=>console.log(data));
+// cars.find({ 'year': { $gte: 2020 } })
+//   .then(data => console.log(data))
+//   .catch(err => console.log(err));
+///////////////////////////////////////////////////////////
+// part 1
+////////////////////////////////////////////////////////////
+const db1=db.connection.useDb('workers')
+const workerSchema = new db.Schema({
+  workerName: String,
+  workerClass: String,
+  age: Number,
+  salary: Number
+});
+const Worker = db1.model('Worker', workerSchema);
+app.post('/add-worker',async(req,res)=>{
+  try{
+    const workerName=req.body.workerName;
+  const workerClass=req.body.workerClass;
+  const age=Number(req.body.age);
+  const salary=Number(req.body.salary);
+  await Worker.create({
+    workerName,
+    workerClass,
+    age,
+    salary
+  })
+   await Worker.deleteMany({age:{$gt:age}})
+  res.send({ success: true, message: `The worker ${workerName} has been added successfully.` })
 }
-
-addUsers();
-
-const CarsScheme=new db.Schema({
-  'carNumber': Number,
-  'brand': String,
-  'year': Number,
-  'color': String
+  catch(err){
+    console.error(`the worker ${workerName} add faild`,err);
+  }
 })
-const cars=db.model('car',CarsScheme);
-cars.insertMany([{'carNumber': 23423443,
-  'brand': 'toyota',
-  'year': 1990,
-  'color': 'black'},{'carNumber': 235345345,
-  'brand': 'yhundi',
-  'year': 1995,
-  'color': 'red'},{'carNumber': 234234,
-  'brand': 'toyota',
-  'year': 2021,
-  'color': 'green'}])
+/////////////////////////////////////////////////////////////////////////////
+//second mission
+//////////////////////////////////////////////////////////////////////////////
+const db2 = db.connection.useDb('vs-shop');
 
-cars.find({'color':'black'}).then((data)=>console.log(data));
-cars.find({ 'year': { $gte: 2020 } })
-  .then(data => console.log(data))
-  .catch(err => console.log(err));
+
+const userSchema = new db.Schema({
+  username: String,
+  email: String,
+  password: String
+});
+
+const User = db2.model('User', userSchema);
+
+
+User.insertMany([
+  { username: 'Tomer', email: 'tomer@example.com', password: '123456' },
+  { username: 'Alice', email: 'alice@example.com', password: 'alice123' },
+  { username: 'Bob', email: 'bob@example.com', password: 'bobpass' }
+]).then(() => console.log('Users inserted'))
+  .catch(err => console.error(err));
+
+
+const productsSchema = new db.Schema({
+  productName: String,
+  price: Number
+});
+
+const Product = db2.model('Product', productsSchema);
+
+
+Product.insertMany([
+  { productName: 'Chanel No.5', price: 95.00 },
+  { productName: 'Dior J\'adore', price: 110.50 },
+  { productName: 'Gucci Bloom', price: 85.25 },
+  { productName: 'YSL Black Opium', price: 99.00 },
+  { productName: 'Lancôme La Vie Est Belle', price: 92.75 },
+  { productName: 'Tom Ford Black Orchid', price: 120.00 },
+  { productName: 'Viktor & Rolf Flowerbomb', price: 88.40 },
+  { productName: 'Creed Aventus for Her', price: 140.99 }
+]).then(() => console.log('Products inserted'))
+  .catch(err => console.error(err));
+
+
+const ordersSchema = new db.Schema({
+  productName: String,
+  orderDate: Date,
+  price: Number
+});
+
+const Order = db2.model('Order', ordersSchema);
+
+// Insert 3 example orders
+Order.insertMany([
+  { productName: 'Chanel No.5', orderDate: new Date('2025-11-25'), price: 95.00 },
+  { productName: 'Gucci Bloom', orderDate: new Date('2025-11-26'), price: 85.25 },
+  { productName: 'Creed Aventus for Her', orderDate: new Date('2025-11-27'), price: 140.99 }
+]).then(() => console.log('Orders inserted'))
+  .catch(err => console.error(err));
+  ///////////////////////////////////////////
+app.post('/login',async(req,res)=>{
+  try{
+    const email=req.body.email;
+    const password=req.body.password;
+    console.log(email,password);
+    const ifSuccess=await User.findOne({email,password})
+    console.log(ifSuccess);
+    if(ifSuccess){
+      res.json({success:true,email})
+    }else
+      {res.json({success:false,message:`${email} not defind please register first`})}
+  }
+    catch(err){
+      console.error('feild',err);
+    }
+})
+//////////////////////////////////////////////////////////////////////////////////
+//register page
+////////////////////////////////////////////////////////////////////////
+app.post('/register',async(req,res)=>{
+  try{
+    const email=req.body.email;
+    const exist=await User.exists({email})
+    if(exist){res.json({success:false,message:'Email is available'})}
+    else{res.json({success:true,message:'Email already registered'})} 
+  }
+  catch(err){
+    console.error({success:false,message:`somethig went wrong ${err} `});
+  }
+})
+
+
+
+
+
 app.listen(port,()=>console.log(`this web is listening to port ${port}`))

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Products</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #e6f5e6;
+    }
+    header {
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px;
+      background: #4CAF50;
+      color: white;
+      font-weight: bold;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .product {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      text-align: center;
+      text-decoration: none;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s;
+    }
+    .product:hover {
+      transform: scale(1.05);
+    }
+    .product img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    .product h3 {
+      margin: 10px 0 5px 0;
+      color: #2e7d32;
+    }
+    .product p {
+      margin: 0 0 10px 0;
+      font-weight: bold;
+      color: #4CAF50;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Hello User</header>
+
+  <div class="product-grid">
+    <a href="product‑chanel.html" class="product">
+      <img src="per-1.jpg" alt="Chanel No.5">
+      <h3>Chanel No.5</h3>
+      <p>$95.00</p>
+    </a>
+
+    <a href="product‑dior.html" class="product">
+      <img src="per-2.jpg" alt="Dior J'adore">
+      <h3>Dior J'adore</h3>
+      <p>$110.50</p>
+    </a>
+
+    <a href="product‑gucci.html" class="product">
+      <img src="per-3.jpg" alt="Gucci Bloom">
+      <h3>Gucci Bloom</h3>
+      <p>$85.25</p>
+    </a>
+
+    <a href="product‑ysl.html" class="product">
+      <img src="per-4.jpg" alt="YSL Black Opium">
+      <h3>YSL Black Opium</h3>
+      <p>$99.00</p>
+    </a>
+
+    <a href="product‑lancome.html" class="product">
+      <img src="per-5.jpg" alt="Lancôme La Vie Est Belle">
+      <h3>Lancôme La Vie Est Belle</h3>
+      <p>$92.75</p>
+    </a>
+
+    <a href="product‑tomford.html" class="product">
+      <img src="per-6.jpg" alt="Tom Ford Black Orchid">
+      <h3>Tom Ford Black Orchid</h3>
+      <p>$120.00</p>
+    </a>
+
+    <a href="product‑flowerbomb.html" class="product">
+      <img src="per-7.jpg" alt="Viktor & Rolf Flowerbomb">
+      <h3>Viktor & Rolf Flowerbomb</h3>
+      <p>$88.40</p>
+    </a>
+
+    <a href="product‑creed.html" class="product">
+      <img src="per-8.jpg" alt="Creed Aventus for Her">
+      <h3>Creed Aventus for Her</h3>
+      <p>$140.99</p>
+    </a>
+  </div>
+
+</body>
+</html>
