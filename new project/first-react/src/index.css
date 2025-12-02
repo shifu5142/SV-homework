@@ -1,0 +1,225 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ---------------- Header Navigation ---------------- */
+.navbar {
+  width: 100%;
+  background: white;
+  padding: 12px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+  box-shadow: 0px 4px 20px rgba(0, 120, 40, 0.2);
+  border-bottom: 3px solid #1fa553;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  margin-top: 0; /* fully attached to top */
+  transition: all 0.3s ease;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  width: 50px;
+  height: 50px;
+  color: #1fa553;
+  padding: 10px;
+  border-radius: 50%;
+  border: 2px solid #1fa553;
+  background: #dfffe8;
+  transition: 0.25s ease;
+}
+
+.logo-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 5px 15px rgba(31, 165, 83, 0.35);
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1fa553;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #333;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: 0.25s ease;
+}
+
+.nav-links li a:hover {
+  background: #1fa553;
+  color: #fff;
+  box-shadow: 0px 3px 12px rgba(31, 165, 83, 0.35);
+  transform: translateY(-2px);
+}
+
+/* ---------------- Student Section ---------------- */
+.student-section {
+  margin-top: 150px; /* ↑ increased distance from navbar */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12%;
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+}
+
+.student-section table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+}
+
+.student-section th,
+.student-section td {
+  padding: 14px 22px;
+  border-bottom: 1px solid #d4d4d4;
+  transition: background 0.3s ease;
+}
+
+.student-section th {
+  background-color: #1fa553;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.student-section tr:hover {
+  background-color: #e6f2e6;
+}
+
+.table-caption {
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #333;
+  text-align: left;
+}
+
+/* ---------------- Footer ---------------- */
+.site-footer {
+  background-color: #1fa553;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 1.05em;
+  letter-spacing: 0.5px;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.part1 {
+  height: 100vh;
+}
+/* ---------------- Centered Add Student Form ---------------- */
+.part2 {
+  height: 100vh;
+  background: linear-gradient(135deg, #e6f9f1, #f0fff8); /* soft gradient background */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* centers the form vertically */
+  padding: 20px;
+}
+.add-student-form {
+  width: 100%;
+  max-width: 420px;        /* slightly larger for better fit */
+  padding: 35px 30px;
+  border-radius: 20px;     /* more rounded corners */
+  background-color: #ffffff; /* clean white background */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); /* soft elegant shadow */
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-student-form:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.add-student-form h2 {
+  margin-bottom: 25px;
+  font-size: 2em;
+  color: #1fa553;
+  font-weight: 700;
+}
+
+/* Form groups */
+.add-student-form .form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.add-student-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #555;
+}
+
+.add-student-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+.add-student-form input:focus {
+  outline: none;
+  border-color: #1fa553;
+  box-shadow: 0 0 10px rgba(31, 165, 83, 0.2);
+}
+
+/* Submit button */
+.add-student-form button {
+  width: 100%;
+  padding: 14px;
+  font-size: 17px;
+  font-weight: 600;
+  background-color: #1fa553;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 10px;
+}
+
+.add-student-form button:hover {
+  background-color: #179146;
+  box-shadow: 0 6px 16px rgba(31, 165, 83, 0.35);
+  transform: translateY(-2px);
+}
