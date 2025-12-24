@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background: linear-gradient(135deg, #f7f9fc, #e9eff5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 18px;
+  text-align: center;
+  width: 340px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.title {
+  font-size: 34px;
+  font-weight: 600;
+  color: #5c9dff;
+  margin-bottom: 10px;
+  white-space: nowrap; /* keeps title in one line */
+}
+
+.card p {
+  font-size: 14px;
+  color: #7a869a;
+  margin-bottom: 30px;
+}
+
+.add-link {
+  color: #5c9dff;
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.add-link:hover {
+  color: #3882f3;
+}
+.roomDiv {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap; /* מאפשר ירידת שורה אם אין מקום */
+  gap: 10px; 
+  padding: 20px;
+}
+.roomLink {
+  transition: all 0.3s;
+  color: #fff;
+}
+.roomLink:hover {
+  transform: scale(1.05);
+  color: #fff;
+}
