@@ -19,10 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage roomDetails={roomDetails} />} />
           <Route path="/addRoom" element={<AddRoom addRoom={addRoom} />} />
-          <Route
-            path="/RoomDetails"
-            element={<RoomDetails />}
-          />
+          <Route path="/RoomDetails" element={<RoomDetails />} />
         </Routes>
       </BrowserRouter>
     </>
